@@ -1,0 +1,38 @@
+name: Node.js CI - Dev Branch Pipeline
+
+on:
+  # АВТОМАТИЧЕСКИЙ ЗАПУСК ПРИ PUSH В ВЕТКУ DEV
+  push:
+    branches: [ "dev" ]
+  
+  # ⚠️ АВТОМАТИЧЕСКИЙ ЗАПУСК ПРИ СОЗДАНИИ PULL REQUEST В ВЕТКУ DEV
+  pull_request:
+    branches: [ "dev" ]
+    types: [opened, synchronize, reopened]
+
+jobs:
+  pipeline-for-dev-branch:
+    runs-on: ubuntu-latest
+    name: Pipeline for Dev Branch PRs
+    
+    steps:
+    - name: Checkout code from Pull Request to Dev
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js for Dev Branch
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18.x'
+        
+    - name: Install dependencies for Dev Branch
+      run: npm ci
+      
+    - name: Run tests for Dev Branch
+      run: npm test
+      
+    - name: Confirm Pipeline for Dev Branch PR
+      run: |
+        echo "🚀 PIPELINE ЗАПУЩЕН ДЛЯ PULL REQUEST В ВЕТКУ DEV"
+        echo "✅ Автоматический запуск при создании PR в dev"
+        echo "✅ Все проверки пройдены для ветки dev"
+        echo "✅ Код готов к мерджу в dev"
