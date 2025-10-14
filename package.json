@@ -1,0 +1,21 @@
+{
+  "name": "cosmetics-shop",
+  "version": "1.0.0",
+  "description": "Интернет-магазин косметического бренда",
+  "main": "src/backend/server.js",
+  "scripts": {
+    "start": "node src/backend/server.js",
+    "dev": "node src/backend/server.js",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "dependencies": {
+    "express": "^4.18.0"
+  },
+  "keywords": [
+    "cosmetics",
+    "ecommerce",
+    "nodejs"
+  ],
+  "author": "annnovik0",
+  "license": "MIT"
+}
